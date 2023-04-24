@@ -54,7 +54,7 @@ function App() {
         releaseDate: newReleaseDate,
         receivedAnOscar: isNewMovieOscar,
         userId: auth?.currentUser?.uid,
-        url: newMovieUrl,
+        url: uploadFile(), //changed line
       });
       getMovieList();
     } catch (error) {
@@ -62,34 +62,29 @@ function App() {
     }
   }
 
+  const uploadFile = async () => {
+    if (imageUpload == null) return;
+    const filesFolderRef = ref(storage, `projectFiles/${imageUpload.name + uniqid()}`) //you could add random names to the end(like uniqid)
+    try {
+      const snapshot = await uploadBytes(filesFolderRef, imageUpload);
+      const url = await getDownloadURL(snapshot.ref);
+      // setNewMovieUrl(url);
+      return url; //added line
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const deleteMovie = async (id) => {
     const movieDoc = doc(db, "movies", id);
     await deleteDoc(movieDoc);
     getMovieList();
-  }
+  };
 
   const updateMovieTitle = async (id) => {
     const movieDoc = doc(db, "movies", id);
     await updateDoc(movieDoc, { title: updatedTitle });
     getMovieList();
-  }
-
-  const uploadFile = async () => {
-    if (imageUpload == null) return;
-    const filesFolderRef = ref(storage, `projectFiles/${imageUpload.name + uniqid()}`) //you could add random names to the end(like uniqid)
-
-    try {
-      const snapshot = await uploadBytes(filesFolderRef, imageUpload);
-      const url = await getDownloadURL(snapshot.ref);
-      setNewMovieUrl(url);
-
-      setTimeout(() => {
-      console.log('newMovieUrl', newMovieUrl);
-      }, 500);
-
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   useEffect(() => {
