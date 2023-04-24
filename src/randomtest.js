@@ -48,7 +48,6 @@ function App() {
   const onSubmitMovie = async () => {
     // await uploadFile();
     try {
-      await uploadFile();
       await addDoc(moviesCollectionRef, {
         title: newMovieTitle,
         releaseDate: newReleaseDate,
