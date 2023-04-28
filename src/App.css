@@ -5,3 +5,10 @@ height: 110px;
   border-radius: 3px;
 
 }
+
+.post--image {
+  height: 110px;
+    width: 110px;
+    object-fit: cover;
+    border-radius: 3px;
+}

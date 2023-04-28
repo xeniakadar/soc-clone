@@ -1,66 +1,78 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import '../App.css';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore';
-import 'firebase/compat/auth';
-
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useState } from "react";
+import { Auth } from "./Auth";
+import { db, auth, storage, user } from "../config/firebase";
+import {
+  getDocs,
+  collection,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-import Post from './Post'
+import uniqid from 'uniqid';
+import { Link } from 'react-router-dom';
+import AddNew from './AddComment';
+import CommentsList from './CommentsList';
 
-firebase.initializeApp({
- apiKey: "AIzaSyCGT9r4o0DQWVYT7o187LY3KLcypYb4bfE",
-  authDomain: "socialclone-37e77.firebaseapp.com",
-  projectId: "socialclone-37e77",
-  storageBucket: "socialclone-37e77.appspot.com",
-  messagingSenderId: "426883089601",
-  appId: "1:426883089601:web:6253e8d5899bf36ae6c040"
-})
+const Homepage = ({ getPostList, postList }) => {
 
-const auth = firebase.auth();
-const firestore = firebase.firestore();
+  //update title state
+  const [updatedTitle, setUpdatedTitle] = useState("");
 
-export default function Homepage() {
+  //CHANGE THIS SO IT DELETES COMMENTS AS WELL
+  const deletePost = async (id, url) => {
+    const postDoc = doc(db, "posts", id);
+    //const commentDoc = doc(db, "comments", id);
+    const postRef = ref(storage, url);
+    deleteObject(postRef).then(() => {
+      console.log("image deleted");
+    }).catch((error) => {
+      console.error(error)
+    })
+    await deleteDoc(postDoc);
+    // await deleteDoc(commentDoc)
+    getPostList();
+  }
 
-  // const dummy = useRef();
-
-  const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
-
-  const [messages] = useCollectionData(query, { idField: 'id' });
-  const [formValue, setFormValue] = useState('');
-
-  const sendMessage = async(e) => {
-    e.preventDefault();
-    const { uid, photoURL, postURL } = auth.currentUser;
-
-    await messagesRef.add({
-      text: formValue,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid,
-      photoURL,
-      postURL,
-    });
-
-    setFormValue('');
-
-    //dummy.current.scrollIntoView({ behavior: 'smooth'});
+  const updatePostTitle = async (id) => {
+    const postDoc = doc(db, "posts", id);
+    await updateDoc(postDoc, { title: updatedTitle });
+    getPostList();
   }
 
   return (
-    <>
-      <main>
-        {messages && messages.map(msg => <Post key={msg.id} message={msg} />)}
+    <div>
+      <Link to="/create-post">
+        <button>Create Post</button>
+      </Link>
+        {postList.map((post) => (
+          <div key={post.id}>
+            <img className='post--image' key={post.postUrl} src={post.postUrl} alt={post.postUrl}/>
+            <h1>{post.title}</h1>
+            <h3>{post.userName}</h3>
 
-        {/* <div ref={dummy}></div> */}
-      </main>
+            <CommentsList path={`posts/${post.id}/comments`}/>
+            <AddNew path={`posts/${post.id}/comments`} />
 
-      <form onSubmit={sendMessage}>
-        <input value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
+            {auth?.currentUser?.uid === post.userId &&
+            <div>
+              <button onClick={() => deletePost(post.id, post.postUrl)}>delete post</button>
+              <input placeholder="edit title" onChange={(e) => setUpdatedTitle(e.target.value)} />
+              <button onClick={() => updatePostTitle(post.id)}>{" "}edit title</button>
+            </div>
+            }
+            <hr />
 
-        <button type='submit'>🕊️</button>
-      </form>
-    </>
+          </div>
+        )
+        )}
+      </div>
   )
 }
+
+export default Homepage;

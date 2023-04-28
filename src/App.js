@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Auth } from "./components/Auth";
-import { db, auth, storage } from "./config/firebase";
+import { db, auth, storage, user } from "./config/firebase";
 import {
   getDocs,
   collection,
@@ -11,132 +11,73 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL,  } from "firebase/storage";
-import uniqid from 'uniqid';
+import { ref, uploadBytesResumable, getDownloadURL, deleteObject  } from "firebase/storage";
+import { Routes, Route } from 'react-router-dom';
+import CreatePost from './components/createPost';
+import Homepage from './components/Homepage';
 
 function App() {
-  const [movieList, setMovieList] = useState([]);
+  const [postList, setPostList] = useState([]);
 
-  //new movie states
-  const [newMovieTitle, setNewMovieTitle] = useState("");
-  const [newReleaseDate, setNewReleaseDate] = useState(0);
-  const [isNewMovieOscar, setIsNewMovieOscar] = useState(false);
-  const [newMovieUrl, setNewMovieUrl] = useState("");
+  const postsCollectionRef = collection(db, "posts");
 
-  //update title state
-  const [updatedTitle, setUpdatedTitle] = useState("");
 
-  //file upload state
-  const [imageUpload, setImageUpload] = useState(null);
-
-  const moviesCollectionRef = collection(db, "movies");
-  //const imagesListRef = ref(storage, "projectFiles/")
-
-  const getMovieList = async () => {
+  const getPostList = async () => {
     try {
-      const data = await getDocs(moviesCollectionRef);
+      const data = await getDocs(postsCollectionRef);
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
-      setMovieList(filteredData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const onSubmitMovie = async () => {
-    // await uploadFile();
-    try {
-      await uploadFile();
-      await addDoc(moviesCollectionRef, {
-        title: newMovieTitle,
-        releaseDate: newReleaseDate,
-        receivedAnOscar: isNewMovieOscar,
-        userId: auth?.currentUser?.uid,
-        url: newMovieUrl,
-      });
-      getMovieList();
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  const deleteMovie = async (id) => {
-    const movieDoc = doc(db, "movies", id);
-    await deleteDoc(movieDoc);
-    getMovieList();
-  }
-
-  const updateMovieTitle = async (id) => {
-    const movieDoc = doc(db, "movies", id);
-    await updateDoc(movieDoc, { title: updatedTitle });
-    getMovieList();
-  }
-
-  const uploadFile = async () => {
-    if (imageUpload == null) return;
-    const filesFolderRef = ref(storage, `projectFiles/${imageUpload.name + uniqid()}`) //you could add random names to the end(like uniqid)
-
-    try {
-      const snapshot = await uploadBytes(filesFolderRef, imageUpload);
-      const url = await getDownloadURL(snapshot.ref);
-      setNewMovieUrl(url);
-
-      setTimeout(() => {
-      console.log('newMovieUrl', newMovieUrl);
-      }, 500);
-
+      setPostList(filteredData);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    getMovieList();
+    getPostList();
   }, []);
 
   return (
     <div>
       <h1>Social Clone</h1>
       {auth.currentUser && <h1>Hi {auth?.currentUser?.displayName}</h1>}
-      <Auth />
-      <div>
-        <input
-          placeholder="movie totle..."
-          onChange={(e) => setNewMovieTitle(e.target.value)} />
-        <input
-          type="number"
-          placeholder="release date"
-          onChange={(e) => setNewReleaseDate(Number(e.target.value))} />
-        <input
-          type="checkbox"
-          checked={isNewMovieOscar}
-          onChange={(e) => setIsNewMovieOscar(e.target.checked)}
-        />
-        <label>Oscar?</label>
-        <input type="file" onChange={(e) => setImageUpload(e.target.files[0])}/>
-        <button onClick={onSubmitMovie}>Submit movie</button>
-        <div>
-        </div>
-      </div>
-      <div>
-        {movieList.map((movie) => (
-          <div key={movie.id}>
-            <img key={movie.url} src={movie.url} alt={movie.url}/>
-            <h1>{movie.title}</h1>
-            <h3>{movie.releaseDate}</h3>
-            {movie.receivedAnOscar && <h3>Received an Oscar!!! </h3>}
-            <button onClick={() => deleteMovie(movie.id)}>delete movie</button>
-            <input placeholder="edit title" onChange={(e) => setUpdatedTitle(e.target.value)} />
-            <button onClick={() => updateMovieTitle(movie.id)}>{" "}edit title</button>
-            <hr />
-          </div>
-        )
-        )}
-      </div>
+        <Auth />
+      <Routes>
+        <Route path='/create-post' element={<CreatePost getPostList={getPostList} />} />
+        <Route path='/' element={<Homepage getPostList={getPostList} postList={postList} />} />
+      </Routes>
+
     </div>
   )
 }
 
 export default App;
+
+  // const onSubmitMovie = async () => {
+  //   // await uploadFile();
+  //   try {
+  //     await uploadFile();
+  //     await addDoc(postsCollectionRef, {
+  //       title: newMovieTitle,
+  //       receivedAnOscar: isNewMovieOscar,
+  //       userId: auth?.currentUser?.uid,
+  //       movieUrl: newMovieUrl,
+  //     });
+  //     getMovieList();
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+
+  // const uploadFile = async () => {
+  //   const filesFolderRef = ref(storage, `projectFiles/${imageUpload.name + uniqid()}`);
+  //   await uploadBytesResumable(filesFolderRef, imageUpload).then((snapshot) => {
+  //     getDownloadURL(snapshot.ref).then((url) => {
+  //       console.log(url)
+  //       setNewMovieUrl(url);
+  //       console.log("newmovieURL: " , newMovieUrl)
+  //     });
+  //   });
+  // }

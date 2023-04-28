@@ -46,14 +46,14 @@ function App() {
   };
 
   const onSubmitMovie = async () => {
-    // await uploadFile();
     try {
+      await uploadFile();
       await addDoc(moviesCollectionRef, {
         title: newMovieTitle,
         releaseDate: newReleaseDate,
         receivedAnOscar: isNewMovieOscar,
         userId: auth?.currentUser?.uid,
-        url: uploadFile(), //changed line
+        url: newMovieUrl
       });
       getMovieList();
     } catch (error) {
@@ -67,7 +67,9 @@ function App() {
     try {
       const snapshot = await uploadBytes(filesFolderRef, imageUpload);
       const url = await getDownloadURL(snapshot.ref);
-      // setNewMovieUrl(url);
+      setNewMovieUrl(url);
+      console.log(snapshot);
+      console.log(url);
       return url; //added line
     } catch (error) {
       console.error(error);
