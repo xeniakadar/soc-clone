@@ -14,15 +14,19 @@ import {
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-import uniqid from 'uniqid';
 import { Link } from 'react-router-dom';
-import AddNew from './AddComment';
+import AddComment from './AddComment';
 import CommentsList from './CommentsList';
+import AddLike from './AddLike';
+import Navbar from './Navbar';
+import binSvg from './images/bin.svg';
+import pencilSvg from './images/pencil.svg'
 
 const Homepage = ({ getPostList, postList }) => {
 
   //update title state
   const [updatedTitle, setUpdatedTitle] = useState("");
+  const [activeEdit, setActiveEdit] = useState(false);
 
   //CHANGE THIS SO IT DELETES COMMENTS AS WELL
   const deletePost = async (id, url) => {
@@ -45,25 +49,34 @@ const Homepage = ({ getPostList, postList }) => {
     getPostList();
   }
 
+  function handleEdit() {
+    setActiveEdit(!activeEdit)
+  }
+
   return (
-    <div>
-      <Link to="/create-post">
-        <button>Create Post</button>
-      </Link>
+    <div className='home--container'>
+       {auth.currentUser && <h1>Welcome, {auth?.currentUser?.displayName}!</h1>}
         {postList.map((post) => (
           <div key={post.id}>
+            <h3 className='post--username'>{post.userName}</h3>
             <img className='post--image' key={post.postUrl} src={post.postUrl} alt={post.postUrl}/>
-            <h1>{post.title}</h1>
-            <h3>{post.userName}</h3>
-
+            <div className='post--caption'>
+              <h3 className='post--username comment--pad ' >{post.userName}</h3>
+              <h3 className='post--title comment--pad '>{post.title}</h3>
+            </div>
             <CommentsList path={`posts/${post.id}/comments`}/>
-            <AddNew path={`posts/${post.id}/comments`} />
+            <AddComment path={`posts/${post.id}/comments`} />
+
+            <AddLike path={`posts/${post.id}/likes`}/>
 
             {auth?.currentUser?.uid === post.userId &&
             <div>
-              <button onClick={() => deletePost(post.id, post.postUrl)}>delete post</button>
-              <input placeholder="edit title" onChange={(e) => setUpdatedTitle(e.target.value)} />
-              <button onClick={() => updatePostTitle(post.id)}>{" "}edit title</button>
+                <img onClick={() => deletePost(post.id, post.postUrl)} className='delete-btn' src={binSvg} alt='delete' />
+                <img className='edit-btn' onClick={handleEdit} src={pencilSvg} alt='edit' />
+                <div className='post--edit ' style={{display: activeEdit? "block" : "none"}}>
+                  <input className='edit--title' placeholder="Edit title..." onChange={(e) => setUpdatedTitle(e.target.value)} />
+                  <button className='edit--submit-btn' onClick={() => updatePostTitle(post.id)}>Submit new title</button>
+                </div>
             </div>
             }
             <hr />

@@ -12,9 +12,9 @@ export default function CommentsList({ path }) {
     <div>
       {docs?.map((doc) => {
         return (
-          <div key={uniqid()}>
-            <h5> {doc.userName} : </h5>
-            <h5 >{doc.comment}</h5>
+          <div className="comment--container" key={uniqid()}>
+            <h5 className="post--username comment--pad">{doc.userName} </h5>
+            <h5 className="post--title comment--pad">{doc.comment}</h5>
           </div>
         )
       }) }

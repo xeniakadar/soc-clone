@@ -22,9 +22,12 @@ export default function AddNew({path}) {
   return (
     <div>
       {auth.currentUser &&
-        <form onSubmit={handleSubmitComment}>
-          <input ref={name} />
-          <button type="submit">Add comment</button>
+        <form className="comment--container" onSubmit={handleSubmitComment}>
+          <input className="comment--input" placeholder="Add a comment..." ref={name} />
+          <div className="comment--btn-container">
+           <button className="comment--submit-btn" type="submit">Add comment</button>
+
+          </div>
         </form>
       }
     </div>

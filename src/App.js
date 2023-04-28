@@ -13,14 +13,16 @@ import {
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject  } from "firebase/storage";
 import { Routes, Route } from 'react-router-dom';
-import CreatePost from './components/createPost';
+import CreatePost from './components/CreatePost';
 import Homepage from './components/Homepage';
+import Navbar from './components/Navbar';
 
 function App() {
   const [postList, setPostList] = useState([]);
 
-  const postsCollectionRef = collection(db, "posts");
+  const [theme, setTheme] = useState("light");
 
+  const postsCollectionRef = collection(db, "posts");
 
   const getPostList = async () => {
     try {
@@ -41,9 +43,7 @@ function App() {
 
   return (
     <div>
-      <h1>Social Clone</h1>
-      {auth.currentUser && <h1>Hi {auth?.currentUser?.displayName}</h1>}
-        <Auth />
+      <Navbar />
       <Routes>
         <Route path='/create-post' element={<CreatePost getPostList={getPostList} />} />
         <Route path='/' element={<Homepage getPostList={getPostList} postList={postList} />} />
@@ -54,30 +54,3 @@ function App() {
 }
 
 export default App;
-
-  // const onSubmitMovie = async () => {
-  //   // await uploadFile();
-  //   try {
-  //     await uploadFile();
-  //     await addDoc(postsCollectionRef, {
-  //       title: newMovieTitle,
-  //       receivedAnOscar: isNewMovieOscar,
-  //       userId: auth?.currentUser?.uid,
-  //       movieUrl: newMovieUrl,
-  //     });
-  //     getMovieList();
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
-
-  // const uploadFile = async () => {
-  //   const filesFolderRef = ref(storage, `projectFiles/${imageUpload.name + uniqid()}`);
-  //   await uploadBytesResumable(filesFolderRef, imageUpload).then((snapshot) => {
-  //     getDownloadURL(snapshot.ref).then((url) => {
-  //       console.log(url)
-  //       setNewMovieUrl(url);
-  //       console.log("newmovieURL: " , newMovieUrl)
-  //     });
-  //   });
-  // }

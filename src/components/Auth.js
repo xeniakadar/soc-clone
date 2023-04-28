@@ -18,6 +18,7 @@ export const Auth = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -25,6 +26,7 @@ export const Auth = () => {
   const logout = async () => {
     try {
       await signOut(auth);
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -46,13 +48,12 @@ export const Auth = () => {
             onChange={((e) => setPassword(e.target.value))}
           />
           <button onClick={signIn}>Sing In</button>
-
         </form>
-          <button onClick={signInWithGoogle}>Sign in With Google</button>
+          <button className="auth--sign-in" onClick={signInWithGoogle}>Sign in With Google</button>
         </>
       }
 
-      {auth.currentUser && <button onClick={logout}>Sign Out</button>}
+      {auth.currentUser && <button className="auth--sign-out" onClick={logout}>Sign Out</button>}
     </div>
   )
 };

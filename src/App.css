@@ -1,14 +1,207 @@
-.homepage--images {
-height: 110px;
-  width: 110px;
-  object-fit: cover;
-  border-radius: 3px;
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.navbar--img {
+  height: 40px;
+  padding-left: 10px;
+  transition: transform 0.3s;
+}
+
+.navbar--img:hover {
+  transform: scale(1.05)
+}
+
+.navbar--container {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  box-shadow: 0 3px 5px rgba(102, 101, 101, 0.3);
+  align-items: center;
+}
+
+.auth--sign-out {
+  height: 40px;
+  width: 100px;
+  border: none;
+  border-radius: 50px;
+  background-color: #295c67;
+  color: #D1E2E6;
+  font-family: 'DM Sans';
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.auth--sign-in {
+  height: 40px;
+  width: 200px;
+  border: none;
+  border-radius: 50px;
+  background-color: #295c67;
+  color: #D1E2E6;
+  font-family: 'DM Sans';
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+button {
+  font-family: 'DM Sans', sans-serif;
+
+}
+
+/* homepage */
+
+.home--container {
+  margin-left: 20px;
+}
+
+.post--username {
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.post--caption {
+  display: flex;
+}
+
+.post--title {
+  font-size: 1rem;
+  font-weight: 100;
+  padding-left: 10px;
 
 }
 
 .post--image {
-  height: 110px;
-    width: 110px;
-    object-fit: cover;
-    border-radius: 3px;
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+
+/* comments */
+
+.comment--container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.comment--pad {
+  padding-bottom: 0px;
+  padding-bottom: 0px;
+  margin: 0px;
+}
+
+.comment--input, .edit--title {
+  border: none;
+  background-color: rgb(242, 242, 242);
+  border-radius: 20px;
+  height: 25px;
+  width: 200px;
+  padding-left: 5px;
+  font-style: italic;
+}
+
+.comment--submit-btn, .edit--submit-btn {
+    height: 25px;
+      width: 120px;
+      border: none;
+      border-radius: 50px;
+      background-color: #295c67;
+      color: #D1E2E6;
+      font-family: 'DM Sans';
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+}
+
+.comment--btn-container {
+  padding-left: 10px;
+
+
+}
+
+
+/* create */
+input::file-selector-button {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 50px;
+  background-color: #1e4b55;
+  color: #D1E2E6;
+  font-family: 'DM Sans';
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.create--container {
+  border: 1px solid #1e4b55;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin: 20px;
+}
+
+.create--text-input {
+  border: none;
+    background-color: rgb(242, 242, 242);
+    border-radius: 20px;
+    height: 25px;
+    padding-left: 5px;
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.create--submit-btn {
+  height: 30px;
+  border: none;
+  border-radius: 50px;
+  background-color: #0080ff;
+  color: #D1E2E6;
+  font-family: 'DM Sans';
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.delete-btn, .edit-btn {
+  height: 25px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.post--edit {
+  display: none;
+}
+
+.edit--submit-btn {
+  margin-left: 10px;
 }
