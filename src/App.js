@@ -10,6 +10,10 @@ import {
   deleteDoc,
   updateDoc,
   doc,
+  orderBy,
+  query,
+  onSnapshot,
+  QuerySnapshot
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject  } from "firebase/storage";
 import { Routes, Route } from 'react-router-dom';
@@ -24,17 +28,21 @@ function App() {
 
   const postsCollectionRef = collection(db, "posts");
 
+  // const query = postsCollectionRef.orderBy('createdAt').limit(3);
+  // console.log(query);
+
   const getPostList = async () => {
-    try {
-      const data = await getDocs(postsCollectionRef);
-      const filteredData = data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setPostList(filteredData);
-    } catch (error) {
-      console.error(error);
-    }
+    const q = query(postsCollectionRef, orderBy('createdAt', 'desc'));
+    onSnapshot(q, (querySnapshot) => {
+      const posts = [];
+      querySnapshot.forEach((doc) => {
+        posts.push({
+          ...doc.data(),
+          id: doc.id
+        });
+      })
+      setPostList(posts);
+    })
   };
 
   useEffect(() => {

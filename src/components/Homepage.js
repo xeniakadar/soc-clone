@@ -10,6 +10,7 @@ import {
   deleteDoc,
   updateDoc,
   doc,
+  serverTimestamp
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -59,6 +60,7 @@ const Homepage = ({ getPostList, postList }) => {
         {postList.map((post) => (
           <div key={post.id}>
             <h3 className='post--username'>{post.userName}</h3>
+
             <img className='post--image' key={post.postUrl} src={post.postUrl} alt={post.postUrl}/>
             <div className='post--caption'>
               <h3 className='post--username comment--pad ' >{post.userName}</h3>

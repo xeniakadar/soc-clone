@@ -10,6 +10,9 @@ import {
   deleteDoc,
   updateDoc,
   doc,
+  serverTimestamp,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL,  } from "firebase/storage";
 import uniqid from 'uniqid';
@@ -48,6 +51,7 @@ const CreatePost = ({getPostList}) => {
               userId: auth?.currentUser?.uid,
               postUrl: url,
               userName: auth?.currentUser?.displayName,
+              createdAt: serverTimestamp(),
               // createdAt: db.firestore.FieldValue.serverTimestamp(), ADD TIMESTAMP
           });
           const postDoc = doc(db, "posts", docRef.id);
@@ -56,7 +60,7 @@ const CreatePost = ({getPostList}) => {
         });
       }
       )
-    }
+  }
     setNewPostTitle("");
     setImageUpload(null);
     setTimeout(() => {
