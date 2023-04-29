@@ -10,10 +10,12 @@ import {
   deleteDoc,
   updateDoc,
   doc,
-  serverTimestamp
+  serverTimestamp,
+  arrayUnion,
+  arrayRemove
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionData,  } from 'react-firebase-hooks/firestore';
 
 import { Link } from 'react-router-dom';
 import AddComment from './AddComment';
@@ -31,16 +33,17 @@ const Homepage = ({ getPostList, postList }) => {
 
   //CHANGE THIS SO IT DELETES COMMENTS AS WELL
   const deletePost = async (id, url) => {
+    const commentDoc = doc(db, "comments", id);
     const postDoc = doc(db, "posts", id);
-    //const commentDoc = doc(db, "comments", id);
     const postRef = ref(storage, url);
+
     deleteObject(postRef).then(() => {
       console.log("image deleted");
     }).catch((error) => {
       console.error(error)
     })
+    await deleteDoc(commentDoc)
     await deleteDoc(postDoc);
-    // await deleteDoc(commentDoc)
     getPostList();
   }
 
@@ -61,7 +64,11 @@ const Homepage = ({ getPostList, postList }) => {
           <div key={post.id}>
             <h3 className='post--username'>{post.userName}</h3>
 
-            <img className='post--image' key={post.postUrl} src={post.postUrl} alt={post.postUrl}/>
+            <img className='post--image' key={post.postUrl} src={post.postUrl} alt={post.postUrl} />
+            <div className='likes--container'>
+              <AddLike path={`posts/${post.id}`}/>
+              <h3  className='post--likes'>{post.likes.length} likes</h3>
+            </div>
             <div className='post--caption'>
               <h3 className='post--username comment--pad ' >{post.userName}</h3>
               <h3 className='post--title comment--pad '>{post.title}</h3>
@@ -69,7 +76,6 @@ const Homepage = ({ getPostList, postList }) => {
             <CommentsList path={`posts/${post.id}/comments`}/>
             <AddComment path={`posts/${post.id}/comments`} />
 
-            <AddLike path={`posts/${post.id}/likes`}/>
 
             {auth?.currentUser?.uid === post.userId &&
             <div>

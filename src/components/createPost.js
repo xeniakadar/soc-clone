@@ -52,6 +52,7 @@ const CreatePost = ({getPostList}) => {
               postUrl: url,
               userName: auth?.currentUser?.displayName,
               createdAt: serverTimestamp(),
+              likes: [],
               // createdAt: db.firestore.FieldValue.serverTimestamp(), ADD TIMESTAMP
           });
           const postDoc = doc(db, "posts", docRef.id);

@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { db, auth } from "../config/firebase";
 import uniqid from 'uniqid'
 
-export default function AddNew({path}) {
+export default function AddComment({path}) {
   const name = useRef();
 
   async function handleSubmitComment(e) {

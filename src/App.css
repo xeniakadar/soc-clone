@@ -205,3 +205,23 @@ input::file-selector-button {
 .edit--submit-btn {
   margin-left: 10px;
 }
+
+.post--likes {
+  font-size: 1rem;
+  font-weight:500;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+
+.like--btn {
+  height: 17px;
+  padding-right: 5px;
+}
+
+.likes--container {
+  display: flex;
+  align-items: center;
+}
