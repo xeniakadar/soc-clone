@@ -4,15 +4,9 @@ import { useState } from "react";
 import { Auth } from "./Auth";
 import { db, auth, storage, user } from "../config/firebase";
 import {
-  getDocs,
-  collection,
-  addDoc,
   deleteDoc,
   updateDoc,
   doc,
-  serverTimestamp,
-  arrayUnion,
-  arrayRemove
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { useCollectionData,  } from 'react-firebase-hooks/firestore';
@@ -21,7 +15,6 @@ import { Link } from 'react-router-dom';
 import AddComment from './AddComment';
 import CommentsList from './CommentsList';
 import AddLike from './AddLike';
-import Navbar from './Navbar';
 import binSvg from './images/bin.svg';
 import pencilSvg from './images/pencil.svg'
 
@@ -59,7 +52,7 @@ const Homepage = ({ getPostList, postList }) => {
 
   return (
     <div className='home--container'>
-       {auth.currentUser && <h1>Welcome, {auth?.currentUser?.displayName}!</h1>}
+       {auth.currentUser && <h1>Welcome {auth?.currentUser?.displayName}!</h1>}
         {postList.map((post) => (
           <div key={post.id}>
             <h3 className='post--username'>{post.userName}</h3>

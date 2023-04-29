@@ -47,7 +47,7 @@ body {
   width: 200px;
   border: none;
   border-radius: 50px;
-  background-color: #295c67;
+  background-color:#1e4b55;
   color: #D1E2E6;
   font-family: 'DM Sans';
   font-size: 1.2rem;
@@ -167,7 +167,8 @@ input::file-selector-button {
     margin: 20px;
 }
 
-.create--text-input {
+.create--text-input,
+.login--text-input {
   border: none;
     background-color: rgb(242, 242, 242);
     border-radius: 20px;
@@ -224,4 +225,57 @@ input::file-selector-button {
 .likes--container {
   display: flex;
   align-items: center;
+}
+
+
+/* log in / register page */
+
+
+.login--container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(225, 237, 255);
+  margin: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.login--elements {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login--btn {
+  height: 30px;
+    width: 80px;
+    border: none;
+    border-radius: 50px;
+    background-color: #1e4b55;
+    color: #D1E2E6;
+    font-family: 'DM Sans';
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.login--google {
+  margin-top: 40px;
+  height: 40px;
+    width: 200px;
+    border: none;
+    border-radius: 50px;
+    background-color: #1e4b55;
+    color: #D1E2E6;
+    font-family: 'DM Sans';
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
 }

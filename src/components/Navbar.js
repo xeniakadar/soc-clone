@@ -33,7 +33,7 @@ export default function Navbar() {
       </div>
       {!auth.currentUser &&
         <Link to="/log-in">
-          <button>Log In or Sign Up</button>
+          <button className="auth--sign-in" >Log In or Sign Up</button>
         </Link>
       }
 

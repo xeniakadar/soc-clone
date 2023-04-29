@@ -23,14 +23,6 @@ export const Auth = () => {
       console.error(error);
     }
   }
-  const logout = async () => {
-    try {
-      await signOut(auth);
-      window.location.reload();
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <div>
