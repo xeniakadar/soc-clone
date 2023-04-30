@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';
-import { Auth } from "./Auth";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
 import homeSvg from './images/home.svg';

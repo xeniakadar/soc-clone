@@ -1,18 +1,13 @@
 import React from 'react';
 import '../App.css';
 import { useState } from "react";
-import { Auth } from "./Auth";
-import { db, auth, storage, user } from "../config/firebase";
+import { db, auth, storage } from "../config/firebase";
 import {
-  getDocs,
   collection,
   addDoc,
-  deleteDoc,
   updateDoc,
   doc,
   serverTimestamp,
-  query,
-  orderBy,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL,  } from "firebase/storage";
 import uniqid from 'uniqid';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import "./App.css";
-import { db, auth, storage, user } from "./config/firebase";
+import { db} from "./config/firebase";
 import {
   collection,
   orderBy,
@@ -16,7 +16,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   const [postList, setPostList] = useState([]);
-  const [theme, setTheme] = useState("light");
+
   const postsCollectionRef = collection(db, "posts");
 
   const getPostList = async () => {

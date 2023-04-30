@@ -13,14 +13,6 @@ const Auth = () => {
 
   const navigate = useNavigate();
 
-  // const signIn = async () => {
-  //   try {
-  //     await createUserWithEmailAndPassword(auth, email, password);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
   const register = async () => {
     try {
       const user = await createUserWithEmailAndPassword(

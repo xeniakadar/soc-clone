@@ -1,17 +1,14 @@
 import React from 'react';
 import '../App.css';
 import { useState } from "react";
-import { Auth } from "./Auth";
-import { db, auth, storage, user } from "../config/firebase";
+import { db, auth, storage } from "../config/firebase";
 import {
   deleteDoc,
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
-import { useCollectionData,  } from 'react-firebase-hooks/firestore';
+import { ref, deleteObject } from "firebase/storage";
 
-import { Link } from 'react-router-dom';
 import AddComment from './AddComment';
 import CommentsList from './CommentsList';
 import AddLike from './AddLike';
