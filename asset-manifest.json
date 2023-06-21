@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/soc-clone/static/css/main.63cc6a32.css",
-    "main.js": "/soc-clone/static/js/main.96025f6c.js",
+    "main.css": "/soc-clone/static/css/main.dd0deda3.css",
+    "main.js": "/soc-clone/static/js/main.34c9af02.js",
     "static/media/empty-heart.png": "/soc-clone/static/media/empty-heart.c412cbaead4744166c20.png",
     "static/media/red-heart.png": "/soc-clone/static/media/red-heart.172e627cb83b2ea56618.png",
     "static/media/bin.svg": "/soc-clone/static/media/bin.7bc8c5973eb5600df155c67dccbaab4f.svg",
@@ -9,11 +9,11 @@
     "static/media/add-post.svg": "/soc-clone/static/media/add-post.1f97c9f4191ab822ff956ef50797cbdd.svg",
     "index.html": "/soc-clone/index.html",
     "static/media/home.svg": "/soc-clone/static/media/home.0439ea5d9b961bea65fce4c30b5e54b4.svg",
-    "main.63cc6a32.css.map": "/soc-clone/static/css/main.63cc6a32.css.map",
-    "main.96025f6c.js.map": "/soc-clone/static/js/main.96025f6c.js.map"
+    "main.dd0deda3.css.map": "/soc-clone/static/css/main.dd0deda3.css.map",
+    "main.34c9af02.js.map": "/soc-clone/static/js/main.34c9af02.js.map"
   },
   "entrypoints": [
-    "static/css/main.63cc6a32.css",
-    "static/js/main.96025f6c.js"
+    "static/css/main.dd0deda3.css",
+    "static/js/main.34c9af02.js"
   ]
 }
