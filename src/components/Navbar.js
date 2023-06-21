@@ -18,15 +18,15 @@ export default function Navbar() {
   };
 
   return (
-    <div className='navbar--container'>
+    <nav className='navbar--container navbar navbar-dark bg-primary'>
 
-      <div className='navbar--functionality'>
+      <div className='navbar--functionality container-fluid '>
         <Link to="/">
-          <img className='navbar--img' src={homeSvg} alt='home' />
+          <img className='navbar--img' src={homeSvg} alt='home' height="24" class="d-inline-block align-text-top" />
         </Link>
         {auth.currentUser &&
         <Link to="/create-post">
-          <img className='navbar--img' src={createPostSvg} alt='create post' />
+          <img className='navbar--img' src={createPostSvg} alt='create post' height="24" class="d-inline-block align-text-top"/>
         </Link>
         }
       </div>
@@ -38,6 +38,6 @@ export default function Navbar() {
 
       {auth.currentUser && <button className="auth--sign-out" onClick={logout}>Sign Out</button> }
 
-    </div>
+    </nav>
   )
 }

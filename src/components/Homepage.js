@@ -74,7 +74,7 @@ const Homepage = ({ getPostList, postList }) => {
               {auth?.currentUser?.uid === post.userId?
               (<>
                 {activeEdit? (<div className='post--edit' style={{display: activeEdit? "block" : "none"}}>
-                  <input className='edit--title' placeholder="Edit comment..." onChange={(e) => setUpdatedTitle(e.target.value)} />
+                  <input className='edit--title' placeholder="Edit title..." onChange={(e) => setUpdatedTitle(e.target.value)} />
                   <button className='edit--submit-btn' onClick={() => updatePostTitle(post.id)}>Submit new title</button>
                   <button className='edit--submit-btn' onClick={(() => setActiveEdit(false))}>Cancel</button>
                 </div>
