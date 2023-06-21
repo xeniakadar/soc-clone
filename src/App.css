@@ -68,6 +68,8 @@ button {
 
 .post--caption {
   display: flex;
+  align-items: center;
+  height: 2em;
 }
 
 .post--title {
@@ -82,6 +84,24 @@ button {
   width: 400px;
   object-fit: cover;
   border-radius: 3px;
+}
+
+.edit--title {
+  border: none;
+  background-color: white;
+  height: 25px;
+  width: 200px;
+  padding-left: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  padding-left: 10px;
+  color: black;
+  font-size: 1rem;
+  font-weight: 100;
+  padding-left: 10px;
+  font-style: italic;
+
 }
 
 
@@ -101,7 +121,7 @@ button {
   margin: 0px;
 }
 
-.comment--input, .edit--title {
+.comment--input {
   border: none;
   background-color: rgb(242, 242, 242);
   border-radius: 20px;
@@ -110,6 +130,8 @@ button {
   padding-left: 5px;
   font-style: italic;
 }
+
+
 
 .comment--submit-btn, .edit--submit-btn {
     height: 25px;
@@ -126,8 +148,6 @@ button {
 
 .comment--btn-container {
   padding-left: 10px;
-
-
 }
 
 
@@ -188,10 +208,23 @@ input::file-selector-button {
 }
 
 
-.delete-btn, .edit-btn {
-  height: 25px;
+.delete-btn {
+  height: 20px;
   padding: 5px;
   cursor: pointer;
+  opacity: 0.1;
+}
+
+.edit-btn {
+  height: 15px;
+  padding-left: 5px;
+  padding-top: 3px;
+  cursor: pointer;
+  opacity: 0.1;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  opacity: 1;
 }
 
 .post--edit {
@@ -273,4 +306,9 @@ input::file-selector-button {
     font-size: 1.2rem;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
+}
+
+.post--topnav {
+  display: flex;
+  justify-content: space-between;
 }

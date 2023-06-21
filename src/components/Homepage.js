@@ -21,7 +21,6 @@ const Homepage = ({ getPostList, postList }) => {
   const [updatedTitle, setUpdatedTitle] = useState("");
   const [activeEdit, setActiveEdit] = useState(false);
 
-  //CHANGE THIS SO IT DELETES COMMENTS AS WELL
   const deletePost = async (id, url) => {
     const commentDoc = doc(db, "comments", id);
     const postDoc = doc(db, "posts", id);
@@ -41,19 +40,29 @@ const Homepage = ({ getPostList, postList }) => {
     const postDoc = doc(db, "posts", id);
     await updateDoc(postDoc, { title: updatedTitle });
     getPostList();
+    setActiveEdit(false)
   }
 
   function handleEdit() {
-    setActiveEdit(!activeEdit)
+    setActiveEdit(!activeEdit);
   }
+
+
 
   return (
     <div className='home--container'>
-       {auth.currentUser && <h1>Welcome {auth?.currentUser?.displayName}!</h1>}
+       {auth.currentUser && <h1>Welcome to momentSnap {auth?.currentUser?.displayName} !</h1>}
         {postList.map((post) => (
           <div key={post.id}>
-            <h3 className='post--username'>{post.userName}</h3>
+            <div className='post--topnav'>
+              <h3 className='post--username'>{post.userName}</h3>
 
+              {auth?.currentUser?.uid === post.userId &&
+              <div>
+                  <img onClick={() => deletePost(post.id, post.postUrl)} className='delete-btn' src={binSvg} alt='delete' />
+              </div>
+              }
+            </div>
             <img className='post--image' key={post.postUrl} src={post.postUrl} alt={post.postUrl} />
             <div className='likes--container'>
               <AddLike path={`posts/${post.id}`}/>
@@ -61,22 +70,28 @@ const Homepage = ({ getPostList, postList }) => {
             </div>
             <div className='post--caption'>
               <h3 className='post--username comment--pad ' >{post.userName}</h3>
-              <h3 className='post--title comment--pad '>{post.title}</h3>
+
+              {auth?.currentUser?.uid === post.userId?
+              (<>
+                {activeEdit? (<div className='post--edit' style={{display: activeEdit? "block" : "none"}}>
+                  <input className='edit--title' placeholder="Edit comment..." onChange={(e) => setUpdatedTitle(e.target.value)} />
+                  <button className='edit--submit-btn' onClick={() => updatePostTitle(post.id)}>Submit new title</button>
+                  <button className='edit--submit-btn' onClick={(() => setActiveEdit(false))}>Cancel</button>
+                </div>
+                ) : (
+                <h3 className='post--title comment--pad' onClick={() => updatePostTitle(post.id)}>{post.title}</h3>
+                )}
+
+                <img className='edit-btn' onClick={handleEdit} src={pencilSvg} alt='edit' />
+              </>) : (
+
+                <h3 className='post--title comment--pad'>{post.title}</h3>
+              )}
             </div>
             <CommentsList path={`posts/${post.id}/comments`}/>
             <AddComment path={`posts/${post.id}/comments`} />
 
 
-            {auth?.currentUser?.uid === post.userId &&
-            <div>
-                <img onClick={() => deletePost(post.id, post.postUrl)} className='delete-btn' src={binSvg} alt='delete' />
-                <img className='edit-btn' onClick={handleEdit} src={pencilSvg} alt='edit' />
-                <div className='post--edit ' style={{display: activeEdit? "block" : "none"}}>
-                  <input className='edit--title' placeholder="Edit title..." onChange={(e) => setUpdatedTitle(e.target.value)} />
-                  <button className='edit--submit-btn' onClick={() => updatePostTitle(post.id)}>Submit new title</button>
-                </div>
-            </div>
-            }
             <hr />
 
           </div>
