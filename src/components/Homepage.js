@@ -58,8 +58,9 @@ const Homepage = ({ getPostList, postList }) => {
 
 
   return (
+    <>
+       {auth.currentUser && <h1 className='home--title'>Welcome {auth?.currentUser?.displayName}!</h1>}
     <div className='home--container'>
-       {auth.currentUser && <h1>Welcome {auth?.currentUser?.displayName}!</h1>}
         {postList.map((post) => (
           <div key={post.id}>
             <div className='post--topnav'>
@@ -100,14 +101,11 @@ const Homepage = ({ getPostList, postList }) => {
             </div>
             <CommentsList path={`posts/${post.id}/comments`}/>
             <AddComment path={`posts/${post.id}/comments`} />
-
-
-            <hr />
-
           </div>
         )
         )}
       </div>
+    </>
   )
 }
 
