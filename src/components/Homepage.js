@@ -46,6 +46,8 @@ const Homepage = ({ getPostList, postList }) => {
 
   function handleEdit() {
     setActiveEdit(!activeEdit);
+
+
   }
 
   function getDateObject(post) {
@@ -94,7 +96,7 @@ const Homepage = ({ getPostList, postList }) => {
                 <h3 className='post--title comment--pad' onClick={() => updatePostTitle(post.id)}>{post.title}</h3>
                 )}
 
-                <img className='edit-btn' onClick={handleEdit} src={pencilSvg} alt='edit' />
+                <img className='edit-btn' onClick={ handleEdit}  style={{display: activeEdit? "none" : "block"}} src={pencilSvg} alt='edit' />
               </>) : (
                 <h3 className='post--title comment--pad'>{post.title}</h3>
               )}
