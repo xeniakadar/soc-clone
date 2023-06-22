@@ -12,6 +12,7 @@ import {
 import { ref, uploadBytesResumable, getDownloadURL,  } from "firebase/storage";
 import uniqid from 'uniqid';
 import { useNavigate } from 'react-router';
+import loadingSvg  from './images/loading.svg'
 
 
 const CreatePost = ({getPostList}) => {
@@ -82,10 +83,16 @@ const CreatePost = ({getPostList}) => {
             onChange={(e) => setNewPostTitle(e.target.value)}
           />
 
-          <input className='create--file' type="file" onChange={handleUpload}/>
+          <input
+          className='create--file'
+          type="file"
+          onChange={handleUpload}
+          accept="image/*"
+          />
           <button className='create--submit-btn' onClick={handleSubmitPost}>Submit post</button>
-          <div>
-          {activeUpload && <img src={LOADING_IMAGE_URL} alt='loading' />}
+          <div className='create--loading'>
+          {activeUpload && <img className='create--loading' src={loadingSvg} alt='loading' />}
+
           </div>
         </div>
       }

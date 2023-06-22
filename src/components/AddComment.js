@@ -25,7 +25,7 @@ export default function AddComment({path}) {
         <form className="comment--container" onSubmit={handleSubmitComment}>
           <input className="comment--input" placeholder="Add a comment..." ref={name} />
           <div className="comment--btn-container">
-           <button className="comment--submit-btn" type="submit">Add comment</button>
+           <button className="comment--submit-btn" type="submit">Post</button>
 
           </div>
         </form>

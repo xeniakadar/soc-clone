@@ -4,6 +4,7 @@ import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
 import homeSvg from './images/home.svg';
 import createPostSvg from './images/add-post.svg';
+import logoSvg from './images/logo.svg'
 
 import { Link } from 'react-router-dom';
 
@@ -18,15 +19,16 @@ export default function Navbar() {
   };
 
   return (
-    <nav className='navbar--container navbar navbar-dark bg-primary'>
+    <div className='navbar--container'>
 
-      <div className='navbar--functionality container-fluid '>
+      <div className='navbar--functionality'>
         <Link to="/">
-          <img className='navbar--img' src={homeSvg} alt='home' height="24" class="d-inline-block align-text-top" />
+          <img className='navbar--svg' src={logoSvg} alt='home' />
         </Link>
         {auth.currentUser &&
         <Link to="/create-post">
-          <img className='navbar--img' src={createPostSvg} alt='create post' height="24" class="d-inline-block align-text-top"/>
+          {/* <img className='navbar--img' src={createPostSvg} alt='create post' /> */}
+          <button className='navbar--img'>+</button>
         </Link>
         }
       </div>
@@ -38,6 +40,6 @@ export default function Navbar() {
 
       {auth.currentUser && <button className="auth--sign-out" onClick={logout}>Sign Out</button> }
 
-    </nav>
+    </div>
   )
 }

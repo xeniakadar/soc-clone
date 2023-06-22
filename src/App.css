@@ -4,61 +4,89 @@ body {
   margin: 0px;
   padding: 0px;
   font-family: 'DM Sans', sans-serif;
+  background-color: #f9f9f3;
+}
+
+/* navbar */
+.navbar--container {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  box-shadow: 0 3px 5px rgba(67, 62, 14, 0.3);
+  align-items: center;
+  background-color: #EDEEC0;
+}
+
+.navbar--functionality{
+  display: flex;
+  align-items: center;
 }
 
 .navbar--img {
-  height: 40px;
-  padding-left: 10px;
-  transition: transform 0.3s;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color:#D0C88E ;
+  border: none;
+  color: #433E0E;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+  margin-left: .4em;
+}
+
+.navbar--img:focus {
+  color: #D0C88E;
+  background-color: #433E0E;
+}
+
+.navbar--svg {
+  height: 30px;
+  position: relative;
+  top: 2px;
 }
 
 .navbar--img:hover {
   transform: scale(1.05)
 }
 
-.navbar--container {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  box-shadow: 0 3px 5px rgba(102, 101, 101, 0.3);
-  align-items: center;
-}
-
 .auth--sign-out {
-  height: 40px;
+  height: 35px;
   width: 100px;
   border: none;
   border-radius: 50px;
-  background-color: #295c67;
-  color: #D1E2E6;
+  background-color: #433E0E;
+  color: #EDEEC0;
   font-family: 'DM Sans';
-  font-size: 1.2rem;
+  font-size: 1em;
   cursor: pointer;
   font-family: 'DM Sans', sans-serif;
 }
 
 .auth--sign-in {
-  height: 40px;
-  width: 200px;
+  height: 35px;
+  width: 150px;
   border: none;
   border-radius: 50px;
-  background-color:#1e4b55;
-  color: #D1E2E6;
+  background-color: #433E0E;
+  color: #EDEEC0;
   font-family: 'DM Sans';
-  font-size: 1.2rem;
+  font-size: 1em;
   cursor: pointer;
   font-family: 'DM Sans', sans-serif;
 }
 
 button {
   font-family: 'DM Sans', sans-serif;
-
 }
 
 /* homepage */
 
 .home--container {
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .post--username {
@@ -76,19 +104,18 @@ button {
   font-size: 1rem;
   font-weight: 100;
   padding-left: 10px;
-
 }
 
 .post--image {
-  height: 400px;
-  width: 400px;
+  height: 25em;
+  width: 22em;
   object-fit: cover;
   border-radius: 3px;
 }
 
 .edit--title {
   border: none;
-  background-color: white;
+  background-color: #F7F7E3;
   height: 25px;
   width: 200px;
   padding-left: 5px;
@@ -123,27 +150,32 @@ button {
 
 .comment--input {
   border: none;
-  background-color: rgb(242, 242, 242);
-  border-radius: 20px;
+  background-color: #EDEEC0;
+
+  border-radius: 10px;
   height: 25px;
   width: 200px;
   padding-left: 5px;
   font-style: italic;
 }
 
-
+.comment--input::placeholder {
+  color:#433E0E;
+  font-size: 1em;
+  font-weight: 100;
+}
 
 .comment--submit-btn, .edit--submit-btn {
-    height: 25px;
-      width: 120px;
-      border: none;
-      border-radius: 50px;
-      background-color: #295c67;
-      color: #D1E2E6;
-      font-family: 'DM Sans';
-      font-size: 0.8rem;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
+    height: 30px;
+    width: 70px;
+    border: none;
+    border-radius: 50px;
+    background-color: #433E0E;
+    color: #EDEEC0;
+    font-family: 'DM Sans';
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
 }
 
 .comment--btn-container {
@@ -153,17 +185,17 @@ button {
 
 /* create */
 input::file-selector-button {
-  height: 50px;
-  width: 150px;
+  height: 30px;
+  width: 100px;
   border: none;
   border-radius: 50px;
-  background-color: #1e4b55;
-  color: #D1E2E6;
+  background-color:#D0C88E;
+  color:#433E0E;
   font-family: 'DM Sans';
-  font-size: 1.4rem;
+  font-size: 1.1em;
   cursor: pointer;
   margin-top: 10px;
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .create {
@@ -173,38 +205,56 @@ input::file-selector-button {
   padding: 40px;
 }
 
+.create--loading {
+  display: flex;
+  justify-content: center;
+}
+
+.create--loading img {
+  width: 5em;
+}
+
 .create--container {
-  border: 1px solid #1e4b55;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    margin: 20px;
+  border: 1px solid #433E0E;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin: 20px;
 }
 
 .create--text-input,
 .login--text-input {
   border: none;
-    background-color: rgb(242, 242, 242);
-    border-radius: 20px;
-    height: 25px;
-    padding-left: 5px;
-    font-style: italic;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  background-color: #EDEEC0;
+  border-radius: 10px;
+  height: 25px;
+  width: 100%;
+  padding-left: 5px;
+  font-style: italic;
+  margin-bottom: 0.5em;
 }
 
+.create--text-input::placeholder,
+.login--text-input::placeholder {
+  color:#94881f;
+  font-size: 1em;
+  font-weight: 100;
+}
+
+
+
 .create--submit-btn {
-  height: 30px;
+  height: 40px;
   border: none;
   border-radius: 50px;
-  background-color: #1e4b55;
-  color: #D1E2E6;
+  background-color: #433E0E;
+  color: #EDEEC0;
   font-family: 'DM Sans';
-  font-size: 1rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  /* margin-top: 10px; */
+  margin-bottom: 20px;
 }
 
 
@@ -235,13 +285,18 @@ input::file-selector-button {
   margin-left: 10px;
 }
 
-.post--likes {
+.post--likes, .post--dateCreated {
   font-size: 1rem;
   font-weight:500;
   padding: 0px;
   margin: 0px;
   margin-top: 5px;
   margin-bottom: 5px;
+
+}
+
+.post--dateCreated {
+  color: lightgrey;
 
 }
 
@@ -253,6 +308,12 @@ input::file-selector-button {
 .likes--container {
   display: flex;
   align-items: center;
+}
+
+.likesdate--container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 
@@ -284,8 +345,8 @@ input::file-selector-button {
     width: 80px;
     border: none;
     border-radius: 50px;
-    background-color: #1e4b55;
-    color: #D1E2E6;
+    background-color: #433E0E;
+  color: #EDEEC0;
     font-family: 'DM Sans';
     font-size: 1rem;
     cursor: pointer;
@@ -300,8 +361,8 @@ input::file-selector-button {
     width: 200px;
     border: none;
     border-radius: 50px;
-    background-color: #1e4b55;
-    color: #D1E2E6;
+    background-color:#D0C88E;
+  color:#433E0E;
     font-family: 'DM Sans';
     font-size: 1.2rem;
     cursor: pointer;
@@ -311,4 +372,5 @@ input::file-selector-button {
 .post--topnav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
