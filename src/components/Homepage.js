@@ -8,6 +8,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { ref, deleteObject } from "firebase/storage";
+import {LazyLoadImage} from 'react-lazy-load-image-component';
 
 import AddComment from './AddComment';
 import CommentsList from './CommentsList';
@@ -69,7 +70,12 @@ const Homepage = ({ getPostList, postList }) => {
               </div>
               }
             </div>
-            <img className='post--image' key={post.postUrl} src={post.postUrl} alt={post.postUrl} />
+            <LazyLoadImage
+            className='post--image'
+            key={post.postUrl}
+            src={post.postUrl}
+            alt={post.postUrl}
+            effect='blur' />
             <div className='likesdate--container'>
               <div className='likes--container'>
                 <AddLike path={`posts/${post.id}`}/>
@@ -85,7 +91,7 @@ const Homepage = ({ getPostList, postList }) => {
                 {activeEdit? (<div className='post--edit' style={{display: activeEdit? "block" : "none"}}>
                   <input className='edit--title' placeholder="Edit title..." onChange={(e) => setUpdatedTitle(e.target.value)} />
                   <button className='edit--submit-btn' onClick={() => updatePostTitle(post.id)}>Submit</button>
-                  <button className='edit--submit-btn' onClick={(() => setActiveEdit(false))}>Cancel</button>
+                  <button className='cancel--submit-btn' onClick={(() => setActiveEdit(false))}>x</button>
                 </div>
                 ) : (
                 <h3 className='post--title comment--pad' onClick={() => updatePostTitle(post.id)}>{post.title}</h3>

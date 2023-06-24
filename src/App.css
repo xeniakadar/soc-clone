@@ -204,6 +204,21 @@ button {
     font-family: 'DM Sans', sans-serif;
 }
 
+.cancel--submit-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color:#ece5ae ;
+  border: none;
+  color: #433E0E;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+  margin-left: .4em;
+}
+
 .comment--btn-container {
   padding-left: 10px;
 }
