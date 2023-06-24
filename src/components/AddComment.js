@@ -16,7 +16,6 @@ export default function AddComment({path}) {
     });
 
     e.target.reset();
-    console.log('comment added')
   }
 
   return (

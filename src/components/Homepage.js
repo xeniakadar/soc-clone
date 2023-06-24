@@ -28,7 +28,6 @@ const Homepage = ({ getPostList, postList }) => {
     const postRef = ref(storage, url);
 
     deleteObject(postRef).then(() => {
-      console.log("image deleted");
     }).catch((error) => {
       console.error(error)
     })
