@@ -53,8 +53,6 @@ const Auth = () => {
     }
   }
 
-  //setName as well! displayName
-
   return (
 
     <div className="create">

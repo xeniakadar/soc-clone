@@ -7,7 +7,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 export default function CommentsList({ path }) {
 
   const commentsCollectionRef = collection(db, path);
-  const [docs, loading, error] = useCollectionData(commentsCollectionRef);
+  const [docs] = useCollectionData(commentsCollectionRef);
   return (
     <div>
       {docs?.map((doc) => {

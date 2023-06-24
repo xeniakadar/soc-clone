@@ -22,7 +22,6 @@ const CreatePost = ({getPostList}) => {
   const postsCollectionRef = collection(db, "posts");
   const [activeUpload, setActiveUpload] = useState(false);
 
-  const LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif?a';
   const navigate = useNavigate();
 
   const handleSubmitPost = () => {

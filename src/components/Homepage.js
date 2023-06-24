@@ -14,7 +14,6 @@ import CommentsList from './CommentsList';
 import AddLike from './AddLike';
 import binSvg from './images/bin.svg';
 import pencilSvg from './images/pencil.svg'
-import { getMonth } from 'date-fns';
 
 const Homepage = ({ getPostList, postList }) => {
 
@@ -46,8 +45,6 @@ const Homepage = ({ getPostList, postList }) => {
 
   function handleEdit() {
     setActiveEdit(!activeEdit);
-
-
   }
 
   function getDateObject(post) {
@@ -56,8 +53,6 @@ const Homepage = ({ getPostList, postList }) => {
     const fullDate = `${month[(date.getMonth())]} ${date.getDate()} ${date.getFullYear()}`
     return fullDate
   }
-
-
 
   return (
     <>

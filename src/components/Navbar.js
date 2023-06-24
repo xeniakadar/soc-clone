@@ -2,8 +2,6 @@ import React from 'react';
 import '../App.css';
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
-import homeSvg from './images/home.svg';
-import createPostSvg from './images/add-post.svg';
 import logoSvg from './images/logo.svg'
 
 import { Link } from 'react-router-dom';
