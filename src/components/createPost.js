@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { useState } from "react";
+import { useNavigate } from 'react-router';
 import { db, auth, storage } from "../config/firebase";
 import {
   collection,
@@ -10,8 +11,9 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL,  } from "firebase/storage";
+
+import CreateAiCaption from './CreateAiCaption';
 import uniqid from 'uniqid';
-import { useNavigate } from 'react-router';
 import loadingSvg  from './images/loading.svg'
 
 
@@ -93,6 +95,7 @@ const CreatePost = ({getPostList}) => {
           {activeUpload && <img className='create--loading' src={loadingSvg} alt='loading' />}
 
           </div>
+          <CreateAiCaption />
         </div>
       }
     </div>
