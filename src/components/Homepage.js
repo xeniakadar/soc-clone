@@ -83,7 +83,7 @@ const Homepage = ({ getPostList, postList }) => {
               <h3 className='post--dateCreated'>{getDateObject(post)}</h3>
             </div>
             <div className='post--caption'>
-              <h3 className='post--username comment--pad ' >{post.userName}</h3>
+              <h3 className='post--username comment--pad' >{post.userName}</h3>
 
               {auth?.currentUser?.uid === post.userId?
               (<>

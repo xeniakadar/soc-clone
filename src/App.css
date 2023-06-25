@@ -98,8 +98,8 @@ button {
 
 .post--caption {
   display: flex;
-  align-items: center;
-  height: 2em;
+  align-items: flex-start;
+  height: auto;
 }
 
 .post--title {
@@ -107,6 +107,7 @@ button {
   font-weight: 100;
   padding-left: 10px;
 }
+
 
 .home--title {
   margin-left: 20px;
@@ -237,6 +238,7 @@ input::file-selector-button {
   margin-bottom: 10px;
 }
 
+
 .create {
   display: flex;
   justify-content: center;
@@ -292,6 +294,33 @@ input::file-selector-button {
   cursor: pointer;
   /* margin-top: 10px; */
   margin-bottom: 20px;
+}
+.copy-btn {
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: 50px;
+  background-color:#D0C88E;
+  color:#433E0E;
+  font-family: 'DM Sans';
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.generate-btn {
+  height: 30px;
+  width: 180px;
+  border: none;
+  border-radius: 50px;
+  background-color:#D0C88E;
+  color:#433E0E;
+  font-family: 'DM Sans';
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 

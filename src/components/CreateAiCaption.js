@@ -51,12 +51,12 @@ export default function CreateAiCaption() {
     <div>
       <form onSubmit={handleSubmit}>
         <h3>Can't think of a good caption? Ask our super creative AI to come up with something fun 🌼</h3>
-        <input type='text' name='user-input' value={inputValue} id='user-input' onChange={handleChange}/>
-        <button type='submit'>Generate caption</button>
+        <input className='create--text-input' placeholder='Describe your photo...' type='text' name='user-input' value={inputValue} id='user-input' onChange={handleChange}/>
+        <button className='generate-btn'  type='submit'>Generate caption</button>
       </form>
       <div className='ai-response'>
         <h4>{displayValue}</h4>
-        <button onClick={handleCopy}>Copy Text</button>
+        <button className='copy-btn' onClick={handleCopy}>Copy Text</button>
       </div>
     </div>
   )
