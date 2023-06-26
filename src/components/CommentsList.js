@@ -12,8 +12,8 @@ export default function CommentsList({ path }) {
     <div>
       {docs?.map((doc) => {
         return (
-          <div className="comment--container" key={uniqid()}>
-            <h5 className="post--username comment--pad">{doc.userName} </h5>
+          <div className="comment--container flex " key={uniqid()}>
+            <h5 className="post--username comment--pad font-bold pr-2">{doc.userName} </h5>
             <h5 className="post--title comment--pad">{doc.comment}</h5>
           </div>
         )

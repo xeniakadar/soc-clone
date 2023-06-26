@@ -29,7 +29,7 @@ export default function AddLike({ path }) {
     <div>
       <img
         onClick={() => like ? handleDislike() : handleNewLike()}
-        className="like--btn" src={like ? likedImage : dislikedImage}
+        className="like--btn h-4" src={like ? likedImage : dislikedImage}
         alt={like ? "liked" : "disliked"} />
     </div>
   )

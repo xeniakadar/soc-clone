@@ -56,47 +56,54 @@ const Homepage = ({ getPostList, postList }) => {
 
   return (
     <>
-       {auth.currentUser && <h1 className='home--title'>Welcome {auth?.currentUser?.displayName}!</h1>}
-    <div className='home--container'>
+       {auth.currentUser && <h1 className='home--title text-3xl pl-5 bg-gray-light pt-5 z-0' >Welcome {auth?.currentUser?.displayName}!</h1>}
+    <div className='home--container bg-gray-light p-3 grid grid-autofit z-50 relative gap-6 '>
         {postList.map((post) => (
-          <div className="card" key={post.id}>
-            <div className='post--topnav'>
-              <h3 className='post--username'>{post.userName}</h3>
+          <div className="card bg-white p-3 shadow-md rounded-lg" key={post.id}>
+            <div className='post--topnav flex justify-between'>
+              <h3 className='post--username font-bold'>{post.userName}</h3>
 
               {auth?.currentUser?.uid === post.userId &&
               <div>
-                  <img onClick={() => deletePost(post.id, post.postUrl)} className='delete-btn' src={binSvg} alt='delete' />
+                  <img onClick={() => deletePost(post.id, post.postUrl)} className='delete-btn h-5 pointer-events-auto opacity-25 hover:opacity-100' src={binSvg} alt='delete' />
               </div>
               }
             </div>
             <LazyLoadImage
-            className='post--image'
+            className='post--image w-auto '
             key={post.postUrl}
             src={post.postUrl}
             alt={post.postUrl}
-            effect='blur' />
-            <div className='likesdate--container'>
-              <div className='likes--container'>
-                <AddLike path={`posts/${post.id}`}/>
-                {post.likes.length === 1 ? (<h3  className='post--likes'>{post.likes.length} like</h3>) : (<h3  className='post--likes'>{post.likes.length} likes</h3>)}
+
+             />
+            <div className='likesdate--container flex justify-between items-center '>
+              <div className='likes--container flex items-center mt-1'>
+                <AddLike className="pr-4"path={`posts/${post.id}`}/>
+                {post.likes.length === 1 ? (<h3  className='post--likes pl-1'>{post.likes.length} like</h3>) : (<h3  className='post--likes pl-1'>{post.likes.length} likes</h3>)}
               </div>
               <h3 className='post--dateCreated'>{getDateObject(post)}</h3>
             </div>
-            <div className='post--caption'>
-              <h3 className='post--username comment--pad' >{post.userName}</h3>
+            <div className='post--caption flex items-top'>
+              <h3 className='post--username comment--pad font-bold pr-2 '  >{post.userName}</h3>
 
               {auth?.currentUser?.uid === post.userId?
               (<>
-                {activeEdit? (<div className='post--edit' style={{display: activeEdit? "block" : "none"}}>
-                  <input className='edit--title' placeholder="Edit title..." onChange={(e) => setUpdatedTitle(e.target.value)} />
-                  <button className='edit--submit-btn' onClick={() => updatePostTitle(post.id)}>Submit</button>
-                  <button className='cancel--submit-btn' onClick={(() => setActiveEdit(false))}>x</button>
+                {activeEdit? (
+                <div className='post--edit pl-2 flex items-center' style={{display: activeEdit? "block" : "none"}}>
+                  <input className='edit--title w-20 sm:w-35' placeholder="Edit title..." onChange={(e) => setUpdatedTitle(e.target.value)} />
+                  <button className='edit--submit-btn pointer-events-auto mr-2 py-1 px-2 text-dark-green
+                    rounded-full border-0 text-sm font-semibold  bg-light-green text-violet-700  hover:bg-dark-green
+                    hover:text-light-green'
+                    onClick={() => updatePostTitle(post.id)}>Submit</button>
+                  <button className='cancel--submit-btn pointer-events-auto py-1 px-2 text-dark-green
+                  rounded-full border-0 text-sm font-semibold  bg-light-green hover:bg-dark-green
+                  hover:text-light-green' onClick={(() => setActiveEdit(false))}>x</button>
                 </div>
                 ) : (
-                <h3 className='post--title comment--pad' onClick={() => updatePostTitle(post.id)}>{post.title}</h3>
+                <h3 className='post--title comment--pad pr-1' onClick={() => updatePostTitle(post.id)}>{post.title}</h3>
                 )}
 
-                <img className='edit-btn' onClick={ handleEdit}  style={{display: activeEdit? "none" : "block"}} src={pencilSvg} alt='edit' />
+                <img className='edit-btn h-4 opacity-25 hover:opacity-100' onClick={ handleEdit}  style={{display: activeEdit? "none" : "block"}} src={pencilSvg} alt='edit' />
               </>) : (
                 <h3 className='post--title comment--pad'>{post.title}</h3>
               )}

@@ -85,7 +85,13 @@ const CreatePost = ({getPostList}) => {
           />
 
           <input
-          className='create--file'
+          className='create--file block w-full text-sm text-slate-500
+          file:mr-4 file:py-1.5 file:px-4 text-dark-green
+          file:rounded-full file:border-0
+          file:text-sm file:font-semibold
+          file:bg-light-green file:text-violet-700
+          hover:file:bg-dark-green
+          hover:file:text-light-green'
           type="file"
           onChange={handleUpload}
           accept="image/*"

@@ -17,19 +17,21 @@ export default function Navbar() {
   };
 
   return (
-    <div className='navbar--container'>
-
-      <div className='navbar--functionality'>
+    <div className='navbar--container pr-4 pl-4  flex h-16 items-center justify-between drop-shadow-4xl'>
+      <div className='navbar--functionality flex'>
         <Link to="/">
-          <img className='navbar--svg' src={logoSvg} alt='home' />
+          <img className='navbar--svg w-40 md:w-48' src={logoSvg} alt='home' />
         </Link>
         {auth.currentUser &&
+
         <Link to="/create-post">
           {/* <img className='navbar--img' src={createPostSvg} alt='create post' /> */}
-          <button className='navbar--img'>+</button>
+          <button className='navbar--img bg-transparent hover:bg-dark-green text-dark-green text-xl font-semibold hover:text-light-green px-2 border border-dark-green hover:border-transparent rounded-full'>+</button>
         </Link>
+
         }
       </div>
+
       {!auth.currentUser &&
         <Link to="/log-in">
           <button className="auth--sign-in" >Log In or Sign Up</button>
