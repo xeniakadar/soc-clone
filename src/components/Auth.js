@@ -1,5 +1,5 @@
 import { auth, googleProvider } from "../config/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from 'react-router';
 
@@ -13,20 +13,18 @@ const Auth = () => {
 
   const navigate = useNavigate();
 
-  const register = async () => {
+  const register = async (name, email, password) => {
     try {
-      const user = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
-        registerEmail,
-        registerPassword,
-        displayName,
-      );
-      console.log(user);
-      setRegisterEmail('');
-      setRegisterPassword('');
-      setDisplayName('');
-    } catch (error) {
-      console.log(error.message);
+        email,
+        password,
+      ).catch((err) => console.log(err));
+
+      await updateProfile(auth.currentUser, {displayName: name}).catch((err) => console.log(err))
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -38,8 +36,12 @@ const Auth = () => {
         loginPassword
       );
       console.log(user);
+      navigate("/");
+      //window.location.reload();
+
     } catch (error) {
       console.log(error.message);
+
     }
   };
 
@@ -80,8 +82,7 @@ const Auth = () => {
             type="password"
             onChange={(e) => {setRegisterPassword(e.target.value)}}
           />
-          <button className="login--btn" onClick={register}>Sign Up</button>
-
+          <button className="login--btn" onClick={() => register(displayName, registerEmail,registerPassword)}>Sign Up</button>
 
         </div>
         <div className="login--elements">

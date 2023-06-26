@@ -59,7 +59,7 @@ const Homepage = ({ getPostList, postList }) => {
        {auth.currentUser && <h1 className='home--title'>Welcome {auth?.currentUser?.displayName}!</h1>}
     <div className='home--container'>
         {postList.map((post) => (
-          <div key={post.id}>
+          <div className="card" key={post.id}>
             <div className='post--topnav'>
               <h3 className='post--username'>{post.userName}</h3>
 

@@ -89,6 +89,8 @@ button {
   margin-left: 20px;
   margin-right: 20px;
   max-width: 355px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .post--username {
@@ -107,7 +109,6 @@ button {
   font-weight: 100;
   padding-left: 10px;
 }
-
 
 .home--title {
   margin-left: 20px;
@@ -140,20 +141,6 @@ button {
 @media (min-width: 500px) {
   .navbar--svg {
     height: 40px;
-  }
-}
-/* @media (min-width: 750px) { */
-  .home--container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
-    gap: 1em;
-  }
-/* } */
-@media (min-width: 1050px) {
-  .home--container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1em;
   }
 }
 
