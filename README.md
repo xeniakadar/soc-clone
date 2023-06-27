@@ -8,7 +8,7 @@ Checkout the <a href='https://xeniakadar.github.io/soc-clone/' target="_blank">l
 
 <h2>Showcase</h2>
 
-The images and the GIF are a great illustration to how the page works -
+The images and the GIF are a great illustration to how the page works. The user is first taken to the homepage, where they can view - but not interact with - other users' posts. The user can login or sign up through email/password or Google. One the user is logged in they can upload a post, where they can ask AI to generate a caption. Once the user uploaded the image they can delete it and edit their caption. Users can like and comment on eachothers' posts.
 
 <img src="./src/components/images/screenshots/animation.gif" width="800px">
 <img src="./src/components/images/screenshots/homepage.png" width="800px">
