@@ -12,6 +12,7 @@ The images and the GIF are a great illustration to how the page works -
 
 <img src="./src/components/images/screenshots/animation.gif" width="800px">
 <img src="./src/components/images/screenshots/homepage.png" width="800px">
+<img src="./src/components/images/screenshots/login.png" width="800px">
 <img src="./src/components/images/screenshots/upload.png" width="800px">
 <img src="./src/components/images/screenshots/mobile.png" width="400px">
 
