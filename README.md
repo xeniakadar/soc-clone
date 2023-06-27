@@ -37,6 +37,7 @@ I used Google Lighthouse to run over my application to check its performance, ac
 <h2>What I learned</h2>
 <ul>
 <li>I dived into the world of Google Firebase, exploring its authentication, storage, and Cloud Firestore features. I gained hands-on experience and developed a solid grasp of these technologies. </li>
-<li> Working with the OpenAI API to add a caption generator. I also explored fine-tuning to shape the AI model according to my needs. Additionally, I used Tailwind CSS and Headless UI to create a better and more responsive interface.</li>
+<li> Working with the OpenAI API to add a caption generator. I also explored fine-tuning to shape the AI model according to my needs.</li>
+<li> Using Tailwind CSS and Headless UI to create a better and more responsive interface.</li>
 
 </ul>
