@@ -17,12 +17,19 @@ module.exports = {
       'orange': '#ff7849',
       'green': '#13ce66',
       'light-green': '#EDEEC0',
+      'super-light-green': '#f3f4e1',
       'dark-green': '#433E0E',
       'yellow': '#ffc82c',
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#f3f4f6',
-      'white': '#FFFFFF'
+      'white': '#FFFFFF',
+      'ashgray' : "#b7b7a4",
+      'sage': '#a5a58d',
+      'sage-dark' : '#6B705C',
+      'bone': '#DADAC8',
+      'ivory' : "#F4F4E7"
+
 
     },
     fontFamily: {

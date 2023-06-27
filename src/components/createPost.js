@@ -74,36 +74,41 @@ const CreatePost = ({getPostList}) => {
   };
 
   return (
-    <div className='create'>
-      {!auth.currentUser && <h1>To create a post, please sign in</h1>}
-      {auth.currentUser &&
-        <div className='create--container'>
-          <input
-            className='create--text-input'
-            placeholder="Add a caption..."
-            onChange={(e) => setNewPostTitle(e.target.value)}
-          />
+    <div className='flex justify-center'>
+      <div className='create flex justify-start bg-ivory sm:w-2/5 rounded-lg '>
+        {!auth.currentUser && <h1>To create a post, please sign in</h1>}
+        {auth.currentUser &&
+          <div className='create--container p-5 flex flex-col items-start'>
+            <h1 className='pb-5 text-lg'>Add a photo and a caption to create a post </h1>
+            <input
+            className='create--file block w-full text-sm text-slate-500
+            file:mr-5 file:py-1.5 file:px-4 file:text-white
+            file:rounded-md file:border-0
+            file:text-sm file:font-semibold
+            file:bg-sage file:text-violet-700
+            hover:file:bg-sage-dark
+            hover:file:opacity-80'
+            type="file"
+            onChange={handleUpload}
+            accept="image/*"
+            />
+            <input
+              className='create--text-input mt-5 pl-1 sm:w-48'
+              placeholder="Add a caption..."
+              onChange={(e) => setNewPostTitle(e.target.value)}
+              id='caption'
+            />
+            <label className="text-xs mb-3 opacity-50 p-1" for="caption">Add Caption</label>
+            <CreateAiCaption />
 
-          <input
-          className='create--file block w-full text-sm text-slate-500
-          file:mr-4 file:py-1.5 file:px-4 text-dark-green
-          file:rounded-full file:border-0
-          file:text-sm file:font-semibold
-          file:bg-light-green file:text-violet-700
-          hover:file:bg-dark-green
-          hover:file:text-light-green'
-          type="file"
-          onChange={handleUpload}
-          accept="image/*"
-          />
-          <button className='create--submit-btn' onClick={handleSubmitPost}>Submit post</button>
-          <div className='create--loading'>
-          {activeUpload && <img className='create--loading' src={loadingSvg} alt='loading' />}
+            <button className='create--submit-btn ring-offset-2 w-32 text-white hover:opacity-90 focus:outline-none focus:ring- bg-sage-dark rounded-lg py-2.5 text-md font-medium leading-5' onClick={handleSubmitPost}>Submit post</button>
+            <div className='create--loading'>
+            {activeUpload && <img className='create--loading' src={loadingSvg} alt='loading' />}
 
+            </div>
           </div>
-          <CreateAiCaption />
-        </div>
-      }
+        }
+      </div>
     </div>
   )
 

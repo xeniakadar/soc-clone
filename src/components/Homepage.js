@@ -65,7 +65,7 @@ const Homepage = ({ getPostList, postList }) => {
 
               {auth?.currentUser?.uid === post.userId &&
               <div>
-                  <img onClick={() => deletePost(post.id, post.postUrl)} className='delete-btn h-5 pointer-events-auto opacity-25 hover:opacity-100' src={binSvg} alt='delete' />
+                  <img onClick={() => deletePost(post.id, post.postUrl)} className='delete-btn h-5 cursor-pointer opacity-25 hover:opacity-100' src={binSvg} alt='delete' />
               </div>
               }
             </div>
@@ -89,21 +89,21 @@ const Homepage = ({ getPostList, postList }) => {
               {auth?.currentUser?.uid === post.userId?
               (<>
                 {activeEdit? (
-                <div className='post--edit pl-2 flex items-center' style={{display: activeEdit? "block" : "none"}}>
-                  <input className='edit--title w-20 sm:w-35' placeholder="Edit title..." onChange={(e) => setUpdatedTitle(e.target.value)} />
-                  <button className='edit--submit-btn pointer-events-auto mr-2 py-1 px-2 text-dark-green
-                    rounded-full border-0 text-sm font-semibold  bg-light-green text-violet-700  hover:bg-dark-green
-                    hover:text-light-green'
+                <div className='post--edit pl-2 flex items-center mb-2' style={{display: activeEdit? "block" : "none"}}>
+                  <input className='edit--title w-32 sm:w-35 bg-gray-light pl-2 mr-2' placeholder="Edit title..." onChange={(e) => setUpdatedTitle(e.target.value)} />
+                  <button className='edit--submit-btn pointer-events-auto mr-2 py-1 px-2
+                    rounded-md border-0 text-sm font-semibold text-white bg-sage hover:opacity-90
+                    '
                     onClick={() => updatePostTitle(post.id)}>Submit</button>
-                  <button className='cancel--submit-btn pointer-events-auto py-1 px-2 text-dark-green
-                  rounded-full border-0 text-sm font-semibold  bg-light-green hover:bg-dark-green
-                  hover:text-light-green' onClick={(() => setActiveEdit(false))}>x</button>
+                  <button className='cancel--submit-btn pointer-events-auto py-1 px-2 text-white
+                  rounded-full border-0 text-sm font-semibold  bg-sage-dark hover:opacity-90
+                  ' onClick={(() => setActiveEdit(false))}>x</button>
                 </div>
                 ) : (
                 <h3 className='post--title comment--pad pr-1' onClick={() => updatePostTitle(post.id)}>{post.title}</h3>
                 )}
 
-                <img className='edit-btn h-4 opacity-25 hover:opacity-100' onClick={ handleEdit}  style={{display: activeEdit? "none" : "block"}} src={pencilSvg} alt='edit' />
+                <img className='edit-btn h-4 opacity-25 hover:opacity-100 cursor-pointer' onClick={ handleEdit}  style={{display: activeEdit? "none" : "block"}} src={pencilSvg} alt='edit' />
               </>) : (
                 <h3 className='post--title comment--pad'>{post.title}</h3>
               )}

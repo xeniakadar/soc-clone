@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@headlessui/react": "^1.7.15",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.20.0",
     "openai": "^3.3.0",

@@ -17,7 +17,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className='navbar--container pr-4 pl-4  flex h-16 items-center justify-between drop-shadow-4xl'>
+    <div className='navbar--container pr-4 pl-4 flex h-16 items-center justify-between drop-shadow-4xl'>
       <div className='navbar--functionality flex'>
         <Link to="/">
           <img className='navbar--svg w-40 md:w-48' src={logoSvg} alt='home' />
@@ -26,7 +26,7 @@ export default function Navbar() {
 
         <Link to="/create-post">
           {/* <img className='navbar--img' src={createPostSvg} alt='create post' /> */}
-          <button className='navbar--img bg-transparent hover:bg-dark-green text-dark-green text-xl font-semibold hover:text-light-green px-2 border border-dark-green hover:border-transparent rounded-full'>+</button>
+          <button className='navbar--img ring-offset-2 w-24 ml-1 text-white hover:opacity-90 focus:outline-none focus:ring- bg-sage-dark rounded-lg py-1.5 text-md font-medium leading-5'>Add Post</button>
         </Link>
 
         }
