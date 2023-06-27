@@ -22,10 +22,10 @@ export default function AddComment({path}) {
     <div>
       {auth.currentUser &&
         <form className="comment--container flex" onSubmit={handleSubmitComment}>
-          <input className="comment--input rounded bg-gray-light pl-2" placeholder="Add a comment..." ref={name} />
+          <input className="comment--input rounded w-80 bg-gray-light pl-2" placeholder="Add a comment..." ref={name} />
           <div className="comment--btn-container ml-2">
            <button className="comment--submit-btn
-          pointer-events-auto mr-2 py-1 px-2
+          pointer-events-auto  py-1.5 px-4
           rounded-md border-0 text-sm font-semibold text-white bg-sage hover:opacity-90" type="submit">Post</button>
 
           </div>

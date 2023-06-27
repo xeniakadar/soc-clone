@@ -34,11 +34,11 @@ export default function Navbar() {
 
       {!auth.currentUser &&
         <Link to="/log-in">
-          <button className="auth--sign-in" >Log In or Sign Up</button>
+          <button className="auth--sign-in ring-offset-2 w-auto px-3 py-2 ml-1 text-white hover:opacity-90 focus:outline-none focus:ring- bg-sage rounded-lg text-md font-medium leading-5" >Log In or Sign Up</button>
         </Link>
       }
 
-      {auth.currentUser && <button className="auth--sign-out" onClick={logout}>Sign Out</button> }
+      {auth.currentUser && <button className="auth--sign-out ring-offset-2 w-auto px-3 py-2 ml-1 text-white hover:opacity-90 focus:outline-none focus:ring- bg-sage rounded-lg text-md font-medium leading-5" onClick={logout}>Sign Out</button> }
 
     </div>
   )

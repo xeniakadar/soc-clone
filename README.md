@@ -26,6 +26,8 @@ I used Google Lighthouse to run over my application to check its performance, ac
 <ul>
 <li>React</li>
 <li>React Router Dom</li>
+<li>Tailwind CSS</li>
+<li>Headless UI</li>
 <li>Firebase</li>
 <li>OpenAI API</li>
 <li>CSS</li>
@@ -35,6 +37,6 @@ I used Google Lighthouse to run over my application to check its performance, ac
 <h2>What I learned</h2>
 <ul>
 <li>I dived into the world of Google Firebase, exploring its authentication, storage, and Cloud Firestore features. I gained hands-on experience and developed a solid grasp of these technologies. </li>
-<li> Working with the OpenAI API to add a caption generator. I also explored fine-tuning to shape the AI model according to my needs.</li>
+<li> Working with the OpenAI API to add a caption generator. I also explored fine-tuning to shape the AI model according to my needs. Additionally, I used Tailwind CSS and Headless UI to create a better and more responsive interface.</li>
 
 </ul>

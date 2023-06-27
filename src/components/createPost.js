@@ -103,8 +103,7 @@ const CreatePost = ({getPostList}) => {
 
             <button className='create--submit-btn ring-offset-2 w-32 text-white hover:opacity-90 focus:outline-none focus:ring- bg-sage-dark rounded-lg py-2.5 text-md font-medium leading-5' onClick={handleSubmitPost}>Submit post</button>
             <div className='create--loading'>
-            {activeUpload && <img className='create--loading' src={loadingSvg} alt='loading' />}
-
+            {activeUpload && <img className='create--loading pt-4' src={loadingSvg} alt='loading' />}
             </div>
           </div>
         }

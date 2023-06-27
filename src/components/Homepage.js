@@ -81,7 +81,7 @@ const Homepage = ({ getPostList, postList }) => {
                 <AddLike className="pr-4"path={`posts/${post.id}`}/>
                 {post.likes.length === 1 ? (<h3  className='post--likes pl-1'>{post.likes.length} like</h3>) : (<h3  className='post--likes pl-1'>{post.likes.length} likes</h3>)}
               </div>
-              <h3 className='post--dateCreated'>{getDateObject(post)}</h3>
+              <h3 className='post--dateCreated opacity-30'>{getDateObject(post)}</h3>
             </div>
             <div className='post--caption flex items-top'>
               <h3 className='post--username comment--pad font-bold pr-2 '  >{post.userName}</h3>
