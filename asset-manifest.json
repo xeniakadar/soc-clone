@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/soc-clone/static/css/main.5f739e03.css",
-    "main.js": "/soc-clone/static/js/main.9fdeb213.js",
+    "main.css": "/soc-clone/static/css/main.398639bc.css",
+    "main.js": "/soc-clone/static/js/main.b8850585.js",
     "static/media/empty-heart.png": "/soc-clone/static/media/empty-heart.c412cbaead4744166c20.png",
     "static/media/red-heart.png": "/soc-clone/static/media/red-heart.172e627cb83b2ea56618.png",
     "static/media/logo.svg": "/soc-clone/static/media/logo.c1ab4315094d5550078b1ce4a9a76655.svg",
+    "static/media/google.svg": "/soc-clone/static/media/google.e835cd7c439a0192a883c94c7c1a54ab.svg",
     "static/media/bin.svg": "/soc-clone/static/media/bin.7bc8c5973eb5600df155c67dccbaab4f.svg",
     "static/media/loading.svg": "/soc-clone/static/media/loading.7267728c7cb6dbf3858b5a70f608f26b.svg",
     "static/media/pencil.svg": "/soc-clone/static/media/pencil.48c8f19a4c081e00f570c7632073a9a8.svg",
     "index.html": "/soc-clone/index.html",
-    "main.5f739e03.css.map": "/soc-clone/static/css/main.5f739e03.css.map",
-    "main.9fdeb213.js.map": "/soc-clone/static/js/main.9fdeb213.js.map"
+    "static/media/chevronUp.svg": "/soc-clone/static/media/chevronUp.0ec85dea0ed48caa1de6ba46efab4d65.svg",
+    "main.398639bc.css.map": "/soc-clone/static/css/main.398639bc.css.map",
+    "main.b8850585.js.map": "/soc-clone/static/js/main.b8850585.js.map"
   },
   "entrypoints": [
-    "static/css/main.5f739e03.css",
-    "static/js/main.9fdeb213.js"
+    "static/css/main.398639bc.css",
+    "static/js/main.b8850585.js"
   ]
 }
