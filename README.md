@@ -4,7 +4,7 @@
 MomentSnap is a social media site for those who want to share their special moments with friends and interact with them by liking and commenting on each others' posts.
 
 <h2>Demo</h2>
-Checkout the <a href='https://xeniakadar.github.io/soc-clone/' target="_blank">live demo</a>.
+Checkout the <a href='https://xeniakadar.github.io/soc-clone/' target="_blank">live demo</a>. If you don't want to make an account use the login: guest@guest.com password: guest123.
 
 <h2>Showcase</h2>
 
